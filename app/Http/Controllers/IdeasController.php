@@ -37,7 +37,7 @@ class IdeasController extends Controller
         */
         //validating form
         $request->validate([
-            "idea-content" => "required"
+            "idea-content" => "required|min:10|max:240"
         ]);
         $ideaTable = new Ideas();
         $ideaTable->content = strip_tags($request->input("idea-content"));

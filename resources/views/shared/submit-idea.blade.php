@@ -3,7 +3,7 @@
     <form action="{{ route('ideas.store') }}" method="POST">
         @csrf
         @error('idea-content')
-            {{$message}}
+            @include('shared.error-message')
         @enderror
         <div class="mb-3">
             <textarea class="form-control" name="idea-content" id="idea" rows="3"></textarea>
