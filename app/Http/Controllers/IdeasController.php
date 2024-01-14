@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ideas;
 use Illuminate\Http\Request;
 
 class IdeasController extends Controller
@@ -28,7 +29,21 @@ class IdeasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //first way
+        /* 
+        $idea = Ideas([
+                "content"=>strip_tags($request->input("idea-content"))
+        ]);
+        */
+        //validating form
+        $request->validate([
+            "idea-content" => "required"
+        ]);
+        $ideaTable = new Ideas();
+        $ideaTable->content = strip_tags($request->input("idea-content"));
+        $ideaTable->save();
+        return redirect("/dashboard")->with("success", "Idea created Successfully");
+
     }
 
     /**
