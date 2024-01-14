@@ -13,7 +13,8 @@ class IdeasController extends Controller
     public function index()
     {
         //
-        return view("/dashboard");
+        $data = Ideas::orderBy("created_at","DESC")->paginate(3);
+        return view("dashboard", ["data" => $data]);
     }
 
     /**

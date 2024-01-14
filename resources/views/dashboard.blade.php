@@ -42,10 +42,13 @@
                 @include('shared.submit-idea')
                 <hr>
                 @foreach ($data as $item)
-                <div class="mt-3">
-                    @include('shared.idea-card')
-                </div>
+                    <div class="mt-3">
+                        @include('shared.idea-card')
+                    </div>
                 @endforeach
+                <div class="mt-2">
+                    {{ $data->links() }}
+                </div>
             </div>
             <div class="col-3">
                 <div class="card">
