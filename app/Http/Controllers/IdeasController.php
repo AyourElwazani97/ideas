@@ -54,7 +54,8 @@ class IdeasController extends Controller
     {
         //
         $data = Ideas::findOrfail($id);
-        return view("ideas.show", ["data" => $data]);
+        //i useed item instead of data cuz im passing ti to childrens who read it as $item;
+        return view("ideas.show", ["item" => $data]);
     }
 
     /**
@@ -63,6 +64,9 @@ class IdeasController extends Controller
     public function edit(string $id)
     {
         //
+        $data = Ideas::findOrfail($id);
+        //i useed item instead of data cuz im passing ti to childrens who read it as $item;
+        return view("ideas.edit", ["data" => $data]);
     }
 
     /**
@@ -71,6 +75,14 @@ class IdeasController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            "idea-content" => "required|min:10|max:240"
+        ]);
+
+        $table = Ideas::findOrfail($id);
+        $table->content = strip_tags($request->input("idea-content"));
+        $table->save();
+        return redirect('ideas')->with('success', 'Idea Updated Successfully...');
     }
 
     /**

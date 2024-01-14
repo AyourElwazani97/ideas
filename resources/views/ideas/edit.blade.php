@@ -39,12 +39,24 @@
             </div>
             <div class="col-6">
                 @include('shared.success-message')
-                <hr>
-                <div class="mt-3">
-                        <div class="mt-3">
-                            @include('shared.idea-card')
+                <h4> Update Your Ideas
+                </h4>
+                <div class="row">
+                    <form action="{{ route('ideas.update', $data->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        @error('idea-content')
+                            @include('shared.error-message')
+                        @enderror
+                        <div class="mb-3">
+                            <textarea class="form-control" name="idea-content" value={{ $data->id }} id="idea" rows="3"></textarea>
                         </div>
+                        <div class="">
+                            <button type="submit" class="btn btn-dark"> Update </button>
+                        </div>
+                    </form>
                 </div>
+                <hr>
             </div>
             <div class="col-3">
                 <div class="card">

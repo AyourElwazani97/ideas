@@ -11,13 +11,16 @@
             </div>
             <div class="d-flex align-items-center">
                 <div>
-                    <a href="{{route('ideas.show',$item->id)}}" class="btn  btn-danger">Details</a>
+                    <a href="{{ route('ideas.edit', $item->id) }}" class="btn  btn-secondary btn-sm">Edit</a>
                 </div>
                 <div>
-                    <form method="POST" action="{{route('ideas.destroy',$item->id)}}">
+                    <a href="{{ route('ideas.show', $item->id) }}" class="btn  btn-success btn-sm">View</a>
+                </div>
+                <div>
+                    <form method="POST" action="{{ route('ideas.destroy', $item->id) }}">
                         @csrf
-                        @method("DELETE")
-                        <button type="submit" class="btn  btn-danger">Delete</button>
+                        @method('DELETE')
+                        <button type="submit" class="btn  btn-danger btn-sm">Delete</button>
                     </form>
                 </div>
             </div>
