@@ -76,9 +76,9 @@ class IdeasController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //first way ==> Ideas::where('id',$id)->first();
         $tableByid = Ideas::findOrfail($id);
         $tableByid->delete();
-        return redirect("ideas");
+        return redirect("ideas")->with('success', "Idea Was Deleted Successfully...");
     }
 }
