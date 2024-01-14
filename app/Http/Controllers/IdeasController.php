@@ -53,6 +53,8 @@ class IdeasController extends Controller
     public function show(string $id)
     {
         //
+        $data = Ideas::findOrfail($id);
+        return view("ideas.show", ["data" => $data]);
     }
 
     /**

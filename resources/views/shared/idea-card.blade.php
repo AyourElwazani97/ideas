@@ -9,12 +9,17 @@
                         </a></h5>
                 </div>
             </div>
-            <div>
-                <form method="POST" action="{{route('ideas.destroy',$item->id)}}">
-                    @csrf
-                    @method("DELETE")
-                    <button type="submit" class="btn  btn-danger">Delete</button>
-                </form>
+            <div class="d-flex align-items-center">
+                <div>
+                    <a href="{{route('ideas.show',$item->id)}}" class="btn  btn-danger">Details</a>
+                </div>
+                <div>
+                    <form method="POST" action="{{route('ideas.destroy',$item->id)}}">
+                        @csrf
+                        @method("DELETE")
+                        <button type="submit" class="btn  btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
