@@ -9,20 +9,27 @@
                         </a></h5>
                 </div>
             </div>
+            <div>
+                <form method="POST" action="{{route('ideas.destroy',$item->id)}}">
+                    @csrf
+                    @method("DELETE")
+                    <button type="submit" class="btn  btn-danger">Delete</button>
+                </form>
+            </div>
         </div>
     </div>
     <div class="card-body">
         <p class="fs-6 fw-light text-muted">
-           {{$item['content']}}
+            {{ $item['content'] }}
         </p>
         <div class="d-flex justify-content-between">
             <div>
                 <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-                    </span> {{$item->likes}} </a>
+                    </span> {{ $item->likes }} </a>
             </div>
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
-                {{$item->created_at}} </span>
+                    {{ $item->created_at }} </span>
             </div>
         </div>
         <div>
@@ -45,7 +52,7 @@
                             ago</small>
                     </div>
                     <p class="fs-6 mt-3 fw-light">
-                     {{$item->content}}
+                        {{ $item->content }}
                     </p>
                 </div>
             </div>

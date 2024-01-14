@@ -13,8 +13,8 @@ class IdeasController extends Controller
     public function index()
     {
         //
-        $data = Ideas::orderBy("created_at","DESC")->paginate(3);
-        return view("dashboard", ["data" => $data]);
+        $data = Ideas::orderBy("created_at", "DESC")->paginate(3);
+        return view("ideas.index", ["data" => $data]);
     }
 
     /**
@@ -43,7 +43,7 @@ class IdeasController extends Controller
         $ideaTable = new Ideas();
         $ideaTable->content = strip_tags($request->input("idea-content"));
         $ideaTable->save();
-        return redirect("/dashboard")->with("success", "Idea created Successfully");
+        return redirect("/ideas")->with("success", "Idea created Successfully");
 
     }
 
@@ -77,5 +77,8 @@ class IdeasController extends Controller
     public function destroy(string $id)
     {
         //
+        $tableByid = Ideas::findOrfail($id);
+        $tableByid->delete();
+        return redirect("ideas");
     }
 }
