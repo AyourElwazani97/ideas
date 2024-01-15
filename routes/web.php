@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdeasController;
+use App\Http\Controllers\StaticController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,5 @@ Route::post('/blabla/{id}',[ourClass::class,'destroy']->name(index.destroy))
 */
 
 Route::resource("ideas", IdeasController::class);
+
+Route::get('/',[StaticController::class,"index"]);
